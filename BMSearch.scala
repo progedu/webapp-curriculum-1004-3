@@ -33,7 +33,7 @@ object BMSearch extends App {
       }
 
       if (isMatch) matchIndexes = matchIndexes :+ i
-
+      //skipTable.getOrElseでマッチしている文字がパターンのどの位置か取得
       var skipCount = skipTable.getOrElse(matchChar, pattern.length) - matchPosition
       if (skipCount <= 0) skipCount = 1
       println("skipCount: " + skipCount)
