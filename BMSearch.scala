@@ -1,5 +1,5 @@
 object BMSearch extends App {
-  val text "カワカドカドカドドワンゴカドカドンゴドワドワンゴドワカワカドンゴドワ".toSeq
+  val text = "カワカドカドカドドワンゴカドカドンゴドワドワンゴドワカワカドンゴドワ".toSeq
   val pattern = "ドワンゴ".toSeq
   val skipTable = pattern.map(s => (pattern.reverse.indexOf(s))).toMap
   println("skipTable: " + skipTable) // Map(ド -> 3, ワ -> 2, ン-> 1,　ゴ -> 0)
