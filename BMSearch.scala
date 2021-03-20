@@ -14,12 +14,7 @@ object BMSearch extends App {
       while (isMatch && patternIndex >= 0) {
         if(text(textIndex) != pattern(patternIndex)) {
           isMatch = false
-          var shiftNum = shiftTable.getOrElse(pattern(patternIndex), pattern.length)
-          if (originIndex < textIndex + shiftNum) {
-            textIndex = textIndex + shiftNum
-          } else {
-            textIndex = originIndex + 1
-          }
+          textIndex = getNextTargetIndex(originIndex, textIndex)
         } else {
           textIndex = textIndex - 1
           patternIndex = patternIndex -1
@@ -29,6 +24,16 @@ object BMSearch extends App {
         matchIndexes = matchIndexes :+ textIndex + 1
         textIndex = originIndex + 1
       }
+    }
+    def getNextTargetIndex(originIndex: Int, textIndex: Int): Int = {
+      var nextIndex:Int = 0
+      var shiftNum = shiftTable.getOrElse(text(textIndex), pattern.length)
+      if (originIndex < textIndex + shiftNum) {
+        nextIndex = textIndex + shiftNum
+      } else {
+        nextIndex = originIndex + 1
+      }
+      nextIndex
     }
     matchIndexes
   }
