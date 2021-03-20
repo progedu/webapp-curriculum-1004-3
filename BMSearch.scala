@@ -7,7 +7,7 @@ object BMSearch extends App {
     var shiftTable = creatShiftTable(pattern)
     var textIndex = 0
     textIndex = pattern.length - 1
-    while(textIndex < text.length && text.length - textIndex >= pattern.length) {
+    while(textIndex < text.length) {
       var patternIndex = pattern.length - 1
       var originIndex = textIndex
       var isMatch = true
